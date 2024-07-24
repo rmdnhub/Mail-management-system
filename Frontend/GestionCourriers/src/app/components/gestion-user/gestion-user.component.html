@@ -1,0 +1,55 @@
+<div class="row justify-content-center">
+    <section class="col-md-6 col-lg-5 my-5">
+
+        <form [formGroup]="formgroupe" (ngSubmit)="onSubmit(formgroupe)">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" formControlName="username" aria-describedby="emailHelp" placeholder="Enter email" required>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" formControlName="password" placeholder="Password" required>
+            </div>
+
+            <div class="form-group">
+                <label for="exapleRole">Role</label>
+                <select id="exapleRole" class="form-control" formControlName="role" required>
+                    <option *ngFor="let rol of roles" [value]="rol.name">{{ rol.name }}</option>
+                </select>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary">Creer</button>
+        </form>
+
+    </section>
+</div>
+
+    <div class="container">
+        <div class="card m-5 p-3">
+            <div class="card-body">
+                <table class="table table-bordered table-striped table-hover" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Utilisateur</th>
+                        <th scope="col">Role</th>
+                        <th scope="col">Action</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let user of allUsers;let i=index">
+                        <th scope="row">{{i+1}}</th>
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.roles[0].name }}</td>
+                        <td>
+                            <button class="btn btn-danger" (click)="deletUser(user)">Supprimer</button>&nbsp;
+                            <button class="btn btn-success position-absolute" (click)="resetPassword(user)">reset password</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>

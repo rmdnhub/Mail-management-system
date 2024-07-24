@@ -1,0 +1,18 @@
+<div class="container">
+    
+    
+        
+    <div class="d-grid gap-2 col-6 mx-auto">
+        <br>
+        <button class="btn btn-outline-secondary " (click)="loadComponent('reponse')" type="button"><i class="bi bi-file-earmark-medical-fill"></i> Reponse</button>
+        <button class="btn btn-outline-secondary" (click)="loadComponent('reponse-fin')" type="button"> <i class="bi bi-file-earmark-check-fill"></i> Reponse verifié</button>
+        <button class="btn btn-outline-success" (click)="loadComponent('reponse-historique')" type="button">Historique </button>
+        <br>
+      </div>
+
+      <!-- Emplacement pour charger les composants -->
+    <ng-container *ngIf="selectedComponent">
+        <ng-container *ngComponentOutlet="selectedComponent"></ng-container>
+    </ng-container>
+
+</div>
